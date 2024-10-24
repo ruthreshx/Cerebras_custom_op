@@ -47,7 +47,7 @@ To get started with this project, follow the steps below to clone the repository
 Run the following commands in your terminal:
 
 ```bash
-git clone https://github.com/vishalijsk/custom-PyTorch-Ops-CPP.git
+git clone https://github.com/ruthreshx/Cerebras_custom_op.git
 cd Cerebras
 ```
 
