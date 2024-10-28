@@ -88,3 +88,16 @@ python setup.py build_ext --inplace
 cd test
 python -m pytest -v <file_name.py>
 ```
+
+## 4. Run the gtest
+
+1. Export necessary configs for cmake and build the project:
+
+   
+```bash
+mkdir build
+cd build
+cmake -DPATH_TO_GTEST=/usr/src/gtest -DCMAKE_PREFIX_PATH=/home/cerebras/env/lib/python3.8/site-packages/torch/share/cmake ..
+make
+test_module
+```
