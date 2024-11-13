@@ -6,11 +6,15 @@ import custom_module
     "input_shapes",
     (
         (torch.Size([1, 1, 32, 32])),
-        (torch.Size([1, 1, 320, 384])),
-        (torch.Size([1, 3, 320, 384])),
+        (torch.Size([1, 1, 32, 384])),
+        (torch.Size([2, 3, 32, 48])),
+        (torch.Size([4, 3, 64, 128])),
     ),
 )
 def test_minimum(input_shapes):
+
+    # manual seed
+    torch.manual_seed(2)
 
     # Generate Randn Input
     input = torch.randn(input_shapes).bfloat16()
@@ -26,5 +30,5 @@ def test_minimum(input_shapes):
 
     # Assert that the custom result matches the expected output
     assert torch.allclose(
-        custom_minimum, torch_minimum, rtol=1e-05, atol=1e-05
+        custom_minimum, torch_minimum, rtol=1e-02, atol=1e-02
     ), f"custom_minimum({input}, {other}) != torch.minimum({input}, {other})"

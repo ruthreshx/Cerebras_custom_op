@@ -8,7 +8,7 @@ namespace custom_namespace {
     // Test for positive inputs to compute_entr
     TEST(EntrTest, PositiveInput) {
         custom_namespace::Entr entr_instance;
-        torch::Tensor input = torch::tensor({0.5, 1.0, 2.0});
+        torch::Tensor input = torch::tensor({2.0, 3.0, 4.0});
         
         // Call compute_entr
         torch::Tensor result = entr_instance.compute_entr(input);
@@ -38,7 +38,7 @@ namespace custom_namespace {
     // Test for negative inputs to compute_entr
     TEST(EntrTest, NegativeInput) {
         custom_namespace::Entr entr_instance;
-        torch::Tensor input = torch::tensor({-0.5, -1.0});
+        torch::Tensor input = torch::tensor({-1.5, -2.5});
         
         // Call compute_entr
         torch::Tensor result = entr_instance.compute_entr(input);

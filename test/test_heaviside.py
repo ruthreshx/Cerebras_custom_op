@@ -6,11 +6,15 @@ import custom_module
     "input_shapes",
     (
         (torch.Size([1, 1, 32, 32])),
-        (torch.Size([1, 1, 320, 384])),
-        (torch.Size([1, 3, 320, 384])),
+        (torch.Size([1, 1, 32, 38])),
+        (torch.Size([2, 3, 64, 84])),
+        (torch.Size([4, 3, 16, 32])),
     ),
 )
 def test_heaviside(input_shapes):
+    
+    # manual seed
+    torch.manual_seed(2)
 
     # Generate Randn Input
     input = torch.randn(input_shapes).bfloat16()

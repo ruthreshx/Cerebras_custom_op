@@ -12,6 +12,9 @@ import custom_module
 )
 @pytest.mark.parametrize("alpha", [-1.0, 0.0, 1.0, 3.0])
 def test_elu(input_shapes, alpha):
+    
+    # manual seed
+    torch.manual_seed(2)
 
     # Generate Randn Input
     input = torch.randn(input_shapes).bfloat16()

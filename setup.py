@@ -12,6 +12,9 @@ setup(
                 'src/heaviside.cpp', # Source files
                 'src/elu.cpp',    # Source files
                 'src/entr.cpp',    # Source files
+                'src/addmm.cpp',    # Source files
+                'src/addmv.cpp',    # Source files
+                'src/addbmm.cpp',    # Source files
                 'pybind/bindings.cpp'  # Pybind wrapper file
             ],
             include_dirs=['include',
