@@ -11,14 +11,14 @@ import custom_module
     ),
 )
 def test_entr(input_shapes):
-    
+
     # manual seed
     torch.manual_seed(4)
 
     # Generate Randn Input
     input = torch.randn(input_shapes)
     input = torch.clamp(input, -100, 100)
-    
+
     # Create an instance of Entr
     ch = custom_module.Entr()
 
@@ -26,9 +26,6 @@ def test_entr(input_shapes):
     custom_entr = ch.compute_entr(input)
 
     torch_entr = torch.special.entr(input)
-    
-    print("custom_entr ===> ", custom_entr)
-    print("torch_entr ===>  ", torch_entr)
 
     # Assert that the custom result matches the expected output
     assert torch.allclose(

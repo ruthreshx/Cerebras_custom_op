@@ -1,6 +1,7 @@
 #include <elu.h>
 
 namespace custom_namespace {
+
   // Custom ELU function implementation
   torch::Tensor ELU::compute_elu(const torch::Tensor& input, double alpha) {
 

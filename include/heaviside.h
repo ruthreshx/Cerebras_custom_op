@@ -1,4 +1,4 @@
-#ifndef MINIMUM_H
+#ifndef HEAVISIDE_H
 
 #include <torch/torch.h>
 
@@ -7,9 +7,9 @@ namespace custom_namespace {
     public:
         Heaviside() {}
 
-        // Function to compute element-wise minimum of two tensors
+        // Function to compute heaviside of two tensors
         torch::Tensor compute_heaviside(const torch::Tensor& input, const torch::Tensor& values);
     };
 }
 
-#endif
+#endif // HEAVISIDE_H

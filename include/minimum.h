@@ -12,4 +12,4 @@ namespace custom_namespace {
     };
 }
 
-#endif
+#endif // MINIMUM_H

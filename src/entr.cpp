@@ -1,6 +1,7 @@
 #include <entr.h>
 
 namespace custom_namespace {
+
   // Custom entr function implementation
   torch::Tensor Entr::compute_entr(const torch::Tensor& input) {
 
