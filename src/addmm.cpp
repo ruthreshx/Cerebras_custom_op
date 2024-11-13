@@ -3,6 +3,7 @@
 namespace custom_namespace {
 
   torch::Tensor custom_mm(torch::Tensor mat1, torch::Tensor mat2) {
+
     // Check if both matrices are 2D
     if (mat1.dim() != 2 || mat2.dim() != 2) {
         throw std::invalid_argument("Both inputs must be 2D matrices");

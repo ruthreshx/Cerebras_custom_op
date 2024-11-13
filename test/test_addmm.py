@@ -7,13 +7,12 @@ import custom_module
     (
         (torch.randn([2, 2]), torch.randn([2, 3]), torch.randn([3, 2])),
         (torch.randn([4, 5]), torch.randn([4, 6]), torch.randn([6, 5])),
-        (torch.zeros(3, 2), torch.ones(3, 4), torch.ones(4, 2)),    # Zero tensor and ones
-        (torch.ones(2, 3), torch.ones(2, 4), torch.ones(4, 3)),     # Ones tensor
+        (torch.zeros(3, 2), torch.ones(3, 4), torch.ones(4, 2)),  # Zero tensor and ones
+        (torch.ones(2, 3), torch.ones(2, 4), torch.ones(4, 3)),  # Ones tensor
     ),
 )
-
 @pytest.mark.parametrize("alpha", [-10.0, -5.0, 0.0, 5.0, 10.0])
-@pytest.mark.parametrize("beta",  [-20.0, -10.0, 0.0, 10.0, 20.0])
+@pytest.mark.parametrize("beta", [-20.0, -10.0, 0.0, 10.0, 20.0])
 def test_addmm(input, mat1, mat2, alpha, beta):
 
     # Create an instance of Addmm

@@ -12,7 +12,7 @@ import custom_module
     ),
 )
 def test_heaviside(input_shapes):
-    
+
     # manual seed
     torch.manual_seed(2)
 

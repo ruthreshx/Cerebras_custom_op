@@ -1,7 +1,9 @@
 #include "heaviside.h"
 
-// Heaviside implementation
+
 namespace custom_namespace {
+
+  //Custom Heaviside implementation
   torch::Tensor Heaviside::compute_heaviside(const torch::Tensor& input, const torch::Tensor& values) {
   
       // Create masks for each condition

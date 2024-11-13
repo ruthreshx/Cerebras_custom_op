@@ -7,7 +7,7 @@ namespace custom_namespace {
     public:
           AddMV() {}
 
-          // Custom ELU function implementation
+          // Custom AddMV function implementation
           torch::Tensor compute_addmv(const torch::Tensor& input, const torch::Tensor& matrix, const torch::Tensor& vector, double beta, double alpha);
   };
 }

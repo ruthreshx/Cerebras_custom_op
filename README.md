@@ -1,6 +1,6 @@
 # PyTorch Operations
 
-# Assignment 2: Custom PyTorch Operations
+# Assignment 2 & 4: Custom PyTorch Operations
 
 ## Overview
 This assignment involves decomposing specific PyTorch operations using only the supported operations in the C++ API. The objective is to ensure the implementations are robust, validated through comprehensive GTest cases, and extended to Python using `pybind11`. The implementation should be well-documented and maintainable.
@@ -10,6 +10,9 @@ This assignment involves decomposing specific PyTorch operations using only the 
   - `torch.heaviside`
   - `torch.special.entr`
   - `torch.nn.ELU`
+  - `torch.addBMM`
+  - `torch.addMM`
+  - `torch.addMV`
 
 
 ## Project Structure
@@ -25,6 +28,8 @@ cerebras/
         ├── custom_ops.cpp # Implementation of custom ops
     ├── test/ 
         ├── custom_ops.py# Pytest cases for validating custom ops 
+    ├── gtest/ 
+        ├── custom_ops.cpp# Gtest cases for validating custom ops 
     ├── setup.py # build configuration file 
     └── README.md # Project documentation
 ```
@@ -35,6 +40,7 @@ cerebras/
 - **pybind/**: Contains the pybind for the custom operations.
 - **src/**: Contains the source code for the custom operations.
 - **test/**: Contains test file to validate the functionality of the custom operations using pytest.
+- **gtest/**: Contains test file to validate the functionality of the custom operations using gtest.
 - **setup.py**: Defines the build configuration, including compiler options and linking the necessary libraries (such as PyTorch, etc.) to compile the C++ code.
 - **README.md**: Provides documentation and instructions for the project.
 
