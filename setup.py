@@ -15,6 +15,9 @@ setup(
                 'src/addmm.cpp',    # Source files
                 'src/addmv.cpp',    # Source files
                 'src/addbmm.cpp',    # Source files
+                'src/copysign.cpp',    # Source files
+                'src/ceil.cpp',    # Source files
+                'src/logaddexp.cpp',    # Source files
                 'pybind/bindings.cpp'  # Pybind wrapper file
             ],
             include_dirs=['include',

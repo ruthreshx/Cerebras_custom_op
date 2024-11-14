@@ -6,6 +6,9 @@
 #include "addmm.h"
 #include "addmv.h"
 #include "addbmm.h"
+#include "logaddexp.h"
+#include "ceil.h"
+#include "copysign.h"
 
 namespace py = pybind11;
 
@@ -144,6 +147,49 @@ PYBIND11_MODULE(custom_module, m) {
 
         "Returns:\n"
         "    torch.Tensor: The result of the addbmm operation.");
-    
 
+    // Bind the LogAddExp class to Python
+    py::class_<custom_namespace::LogAddExp>(m, "LogAddExp")
+        .def(py::init<>())  // Bind the constructor
+        .def("compute_logaddexp", &custom_namespace::LogAddExp::compute_logaddexp, // Bind compute_logaddexp method
+
+             py::arg("input"), py::arg("other"),  // Name the arguments
+             "Compute the Logarithm of the sum of exponentiations of the inputs.\n\n"
+
+             "Arguments:\n"
+             "    input (torch.Tensor): The first tensor.\n"
+             "    other (torch.Tensor): The second tensor.\n\n"
+
+             "Returns:\n"
+             "    torch.Tensor: The result of the logaddexp operation.");
+
+    // Bind the CopySign class to Python
+    py::class_<custom_namespace::CopySign>(m, "CopySign")
+        .def(py::init<>())  // Bind the constructor
+        .def("compute_copysign", &custom_namespace::CopySign::compute_copysign, // Bind compute_copysign method
+
+             py::arg("input"), py::arg("other"),  // Name the arguments
+             "Compute the new floating-point tensor with the magnitude of input and the sign of other.\n\n"
+
+             "Arguments:\n"
+             "    input (torch.Tensor): The first tensor.\n"
+             "    other (torch.Tensor): The second tensor.\n\n"
+
+             "Returns:\n"
+             "    torch.Tensor: The result of the copysign operation.");
+
+    // Bind the Ceil class to Python
+    py::class_<custom_namespace::Ceil>(m, "Ceil")
+        .def(py::init<>())  // Bind the constructor
+        .def("compute_ceil", &custom_namespace::Ceil::compute_ceil, // Bind compute_ceil method
+
+             py::arg("input"),  // Name the arguments
+             "Compute the ceil of the elements of input, the smallest integer greater than or equal to each element.\n\n"
+
+             "Arguments:\n"
+             "    input (torch.Tensor): The first tensor.\n"
+
+             "Returns:\n"
+             "    torch.Tensor: The result of the ceil operation.");
+    
 }

@@ -22,13 +22,24 @@ add_library(custom_module SHARED
                 src/addmm.cpp
                 src/addmv.cpp
                 src/addbmm.cpp
+                src/ceil.cpp
+                src/logaddexp.cpp
                 )
 
 # Link Torch libraries to the custom library
 target_link_libraries(custom_module "${TORCH_LIBRARIES}")
 
 # Create the test executable from the test source file
-add_executable(test_module gtest/test_minimum.cpp gtest/test_elu.cpp gtest/test_entr.cpp gtest/test_heaviside.cpp gtest/test_addmm.cpp gtest/test_addmv.cpp gtest/test_addbmm.cpp)
+add_executable(test_module 
+                gtest/test_minimum.cpp 
+                gtest/test_elu.cpp 
+                gtest/test_entr.cpp 
+                gtest/test_heaviside.cpp 
+                gtest/test_addmm.cpp 
+                gtest/test_addmv.cpp 
+                gtest/test_addbmm.cpp
+                gtest/test_logaddexp.cpp 
+                gtest/test_ceil.cpp)
 
 # Link GTest libraries to the test executable
 target_link_libraries(test_module custom_module gtest gtest_main)
