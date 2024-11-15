@@ -32,24 +32,39 @@ namespace custom_namespace {
 
     // Return the result of the matrix multiplication
     return result;
-}
+  }
 
   // Custom AddMM function implementation
   torch::Tensor AddMM::compute_addmm(const torch::Tensor& input, const torch::Tensor& mat1, const torch::Tensor& mat2, double beta, double alpha) {
 
-    // Handle alpha == 0 && beta == 0
-    if (alpha == 0 && beta == 0){
-      return torch::zeros_like(input);
-    }
-    else if(alpha == 0){ // Handle alpha == 0 
-      return beta * input;
-    }
-    else if(beta == 0){ // Handle beta == 0 
-      return custom_mm(mat1, mat2) * alpha;
-    }
+    // Handle alpha == 0 & beta == 0 or beta == 1
+    if (alpha == 0) {
+        // Skip matrix-vector multiplication; use only scaled input (if beta > 0)
+        if (beta == 0) {
+            return torch::zeros_like(input);  // If beta == 0, the result is zeros
+        } else if (beta == 1) {
+            return input;  // If beta == 1, the result is just the input
+        } else {
+            return beta * input;  // For other beta values, scale input by beta
+        }
+    } 
+    else {
 
-    // out=β input+α (mat1 @ mat2)
-    return alpha * custom_mm(mat1, mat2) + beta * input;
+        // Perform matrix multiplication (mat1 @ mat2)
+        torch::Tensor mat_product =  custom_mm(mat1, mat2);
+
+        // Scale the result of matrix-vector multiplication by alpha if alpha is not 1
+        torch::Tensor scaled_mat_product = (alpha == 1) ? mat_product : alpha * mat_product;
+
+        if (beta == 0) {
+            return scaled_mat_product;  // No input scaling, just matrix-vector product
+        } else if (beta == 1) {
+            return input + scaled_mat_product;  // If beta == 1, add input to the product
+        } else {
+            // out=β input + α (mat1 @ mat2)
+            return beta * input + scaled_mat_product;  // For other beta values, scale input by beta
+        }
+    }
 
   }
 }
