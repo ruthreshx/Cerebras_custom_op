@@ -9,8 +9,9 @@ import custom_module
         (torch.randn([7, 5])),
         (torch.zeros(5, 2)),  # Zero tensor and ones
         (torch.ones(2)),  # Ones tensor
-        (torch.randn([4, 5, 4, 5])), # 4D
-        (torch.randn([32, 16, 32, 18])), # Bigger shape
+        (torch.tensor([-2, -0.0, 0.0, 1.0, 2.0])),  # Ones tensor
+        (torch.randn([4, 5, 4, 5])),  # 4D
+        (torch.randn([32, 16, 32, 18])),  # Bigger shape
     ),
 )
 def test_ceil(input):

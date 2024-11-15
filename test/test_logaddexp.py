@@ -9,6 +9,10 @@ import custom_module
         (torch.randn([8, 5]), torch.randn([8, 5])),
         (torch.ones(7, 2), torch.zeros(7, 2)),  # Zero tensor and ones
         (torch.ones(9, 3), torch.ones(9, 3)),  # Ones tensor
+        (
+            torch.tensor([3.0, -3.34, 445635.32, -2.0]),
+            torch.tensor([-10.0, 33.34, -534223.322, -1.0]),
+        ),  # Negative values
         (torch.randn(6, 6, 4, 4), torch.randn(6, 6, 4, 4)),  # 4D
         (torch.randn(6, 8, 32, 64), torch.randn(6, 8, 32, 64)),  # 4D Bigger shapes
     ),
@@ -22,7 +26,7 @@ def test_logaddexp(input, other):
     custom_logaddexp = ch.compute_logaddexp(input, other)
 
     torch_logaddexp = torch.logaddexp(input, other)
-    
+
     # Assert that the custom result matches the expected output
     assert torch.allclose(
         custom_logaddexp, torch_logaddexp, rtol=1e-05, atol=1e-05
