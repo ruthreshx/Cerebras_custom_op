@@ -40,11 +40,13 @@ namespace custom_namespace {
         // Skip matrix-vector multiplication; use only scaled input (if beta > 0)
         if (beta == 0) {
             return torch::zeros_like(input);  // If beta == 0, the result is zeros
-        } else if (beta == 1) {
+        } 
+        if (beta == 1) {
             return input;  // If beta == 1, the result is just the input
-        } else {
-            return beta * input;  // For other beta values, scale input by beta
-        }
+        } 
+
+        return beta * input;  // For other beta values, scale input by beta
+
     } 
     else {
 
@@ -56,12 +58,12 @@ namespace custom_namespace {
 
         if (beta == 0) {
             return batch_mat_product;  // No input scaling, just matrix-vector product
-        } else if (beta == 1) {
-            return input + batch_mat_product;  // If beta == 1, add input to the product
-        } else {
-            // out=β input + α (mat1 @ mat2)
-            return beta * input + batch_mat_product;  // For other beta values, scale input by beta
         }
+        if (beta == 1) {
+            return input + batch_mat_product;  // If beta == 1, add input to the product
+        }
+        // out=β input + α (mat1 @ mat2)
+        return beta * input + batch_mat_product;  // For other beta values, scale input by beta
     }
   }
 }

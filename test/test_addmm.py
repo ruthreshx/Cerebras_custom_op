@@ -1,6 +1,8 @@
 import torch, pytest
 import custom_module
 
+torch.manual_seed(2)
+
 
 @pytest.mark.parametrize(
     "input, mat1, mat2",
@@ -11,8 +13,8 @@ import custom_module
         (torch.ones(2, 3), torch.ones(2, 4), torch.ones(4, 3)),  # Ones tensor
     ),
 )
-@pytest.mark.parametrize("alpha", [-10.0, -5.0, 0.0, 5.0, 10.0])
-@pytest.mark.parametrize("beta", [-20.0, -10.0, 0.0, 10.0, 20.0])
+@pytest.mark.parametrize("alpha", [-10.0, -5.0, 0.0, 1.0, 5.0, 10.0])
+@pytest.mark.parametrize("beta", [-20.0, -10.0, 0.0, 1.0, 10.0, 20.0])
 def test_addmm(input, mat1, mat2, alpha, beta):
 
     # Create an instance of Addmm

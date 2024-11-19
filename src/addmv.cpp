@@ -23,11 +23,12 @@ namespace custom_namespace {
         // Skip matrix-vector multiplication; use only scaled input (if beta > 0)
         if (beta == 0) {
             return torch::zeros_like(input);  // If beta == 0, the result is zeros
-        } else if (beta == 1) {
-            return input;  // If beta == 1, the result is just the input
-        } else {
-            return beta * input;  // For other beta values, scale input by beta
         }
+        if (beta == 1) {
+            return input;  // If beta == 1, the result is just the input
+        } 
+        return beta * input;  // For other beta values, scale input by beta
+
     } 
     else {
 
@@ -38,13 +39,13 @@ namespace custom_namespace {
         torch::Tensor scaled_mat_vec_product = (alpha == 1) ? mat_vec_product : alpha * mat_vec_product;
 
         if (beta == 0) {
-            return torch::mv(matrix, vector);  // No input scaling, just matrix-vector product
-        } else if (beta == 1) {
-            return input + torch::mv(matrix, vector);  // If beta == 1, add input to the product
-        } else {
-            // out=β input + α (mat @ vec)
-            return beta * input + torch::mv(matrix, vector);  // For other beta values, scale input by beta
+            return scaled_mat_vec_product;  // No input scaling, just matrix-vector product
         }
+        if (beta == 1) {
+            return input + scaled_mat_vec_product;  // If beta == 1, add input to the product
+        }
+        // out=β input + α (mat @ vec)
+        return beta * input + scaled_mat_vec_product;  // For other beta values, scale input by beta
     }
 
   }

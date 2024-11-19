@@ -6,8 +6,8 @@ import custom_module
     "input_shapes",
     (
         (torch.Size([1, 1, 2, 2])),
-        # (torch.Size([2, 2, 32, 84])),
-        # (torch.Size([4, 3, 32, 64])),
+        (torch.Size([2, 2, 32, 84])),
+        (torch.Size([4, 3, 32, 64])),
     ),
 )
 def test_entr(input_shapes):
