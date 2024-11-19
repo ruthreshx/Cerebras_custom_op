@@ -15,9 +15,9 @@ import custom_module
             torch.tensor([-10.0, 33.34, -53.322, 1.0]),
         ),  # Negative values
         (
-            torch.tensor([0.0, -11.34, -56.32, -190.0]),
-            torch.tensor([-0.0, -33.34, 90.322, -32.0]),
-        ),  # Negative values
+            torch.tensor([-0.0, 1.0, 0.0, -0.0, -11.34, -56.32, -190.0]),
+            torch.tensor([-0.0, 0.0, -0.0, 1.0, -33.34, 90.322, -32.0]),
+        ),  # Negative values with all corner cases
     ),
 )
 def test_copySign(input, other):
@@ -29,9 +29,6 @@ def test_copySign(input, other):
     custom_copysign = ch.compute_copysign(input, other)
 
     torch_copysign = torch.copysign(input, other)
-
-    print("\n custom_copysign ===> ", custom_copysign)
-    print("torch_copysign  ===> ", torch_copysign)
 
     # Assert that the custom result matches the expected output
     assert torch.allclose(
